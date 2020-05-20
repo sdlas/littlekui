@@ -1,44 +1,98 @@
-<view class="backanimation" style="position:fixed;top:{{windowHeight/2-rad}}px;left:{{windowWidth/2-rad}}px;width:{{rad*2}}px;height:{{rad*2}}px;border-radius:{{rad*2}}px;z-index:0;{{rippleStyle}};{{turnleftStyle}}" wx:if="{{stack<=1}}"></view>
+<!-- 悬浮展示部分 -->
+<!-- 开场按钮 -->
+<view class="backanimation" style="position:fixed;top:{{windowHeight/2-rad}}px;left:{{windowWidth/2-rad}}px;width:{{rad*2}}px;height:{{rad*2}}px;border-radius:{{rad*2}}px;z-index:0;{{rippleStyle}};{{turnleftStyle}}" wx:if="{{stack==1}}"></view>
+
+<!-- 旋转加载条 -->
 <view wx:if="{{stack==1}}" class="fang" style="position:fixed;top:{{windowHeight/2-rad-4}}px;left:{{windowWidth/2-rad-4}}px;width:{{rad*2}}px;height:{{rad*2}}px;border-radius:{{rad*2}}px;z-index:11;{{turnleftStyle}};"></view>
+
+
+<!-- 对话框，名字-->
 <view wx:if="{{stack==2}}">
   <view class="chatbuble" style="z-index:11;{{chatStyle}}">{{chatmessage}}</view>
   <view class="chatbuble2" style="z-index:11;"></view>
   <view class="chatbuble3" style="z-index:11;"></view>
-  <view class="floatname" style="z-index:11;">小葵</view>
+  <view class="floatname" style="z-index:11;">Clytie</view>
 </view>
+
+<!-- 主体页面 -->
 <view class="container" style="height:{{windowHeight}}px;width:{{windowWidth}}px;">
-  <view wx:if="{{stack==0}}" style="z-index:10;">
-    <view class="startbtn" bindtap="start">开始使用</view>
+  <!-- 开始使用按钮 -->
+  <form wx:if="{{stack==0}}" style="z-index:10;" bindsubmit="getbluename">
+  <view class="inputbluebox">
+    <input class="bluetext" placeholder="请输入蓝牙设备名称" name="bluename"></input>
+    <button class="bluebtn" form-type="submit">确认</button>
   </view>
+  </form>
+
+  <!-- 加载信息 -->
   <view wx:if="{{stack==1}}" style="z-index:10;">
-  <view class="loadingbtn" style="{{turnleftStyle}}">
-    <view class="textbox" style="font-size:{{!twoline?'20px':'20px'}};line-height:{{!twoline?'60px':'30px'}};{{showStyle}};">{{loadingmessage}}</view>
+    <view class="loadingbtn" style="{{turnleftStyle}}">
+      <view class="textbox" style="font-size:{{!twoline?'20px':'20px'}};line-height:{{!twoline?'60px':'30px'}};{{showStyle}};">{{loadingmessage}}</view>
+    </view>
   </view>
-  </view>
+
+  <!-- 操作页面 -->
   <view wx:if="{{stack==2}}">
-    <scroll-view stroll-y="true" style="height:{{windowHeight}}px;width:{{windowWitdh}}px">
+      <!-- 实际的容器 -->
       <view class="truecontainer" style="height:{{windowHeight}}px;width:{{windowWidth}}px;">
+        <!-- 信息模块 -->
         <image class="avatar" src="../images/avatar.jpg" style="z-index:2" bindtap="sendData"></image>
-        <view class="greenland"></view>
-        <view class="infobox" style="z-index:0;height:{{windowHeight-145}}px;">
-          <view class="tabbox">
-            <view class="bar" bindtap="changebar" data-id="1" style="background-color:{{currenttab==1?'greenyellow':''}};border-top-right-radius:10px;">检测轨迹</view>
-            <view class="bar" bindtap="changebar" data-id="2" style="background-color:{{currenttab==2?'greenyellow':''}};">当前光强</view>
-            <view class="bar" bindtap="changebar" data-id="3" style="background-color:{{currenttab==3?'greenyellow':''}};border-top-left-radius:10px;">日光强记录</view>
-          </view>
-          <view hidden="{{myCanvas}}" class="canvasbox">
-            <canvas  canvas-id="myCanvas" style="height:300px;width:300px"/>
-          </view>
-          <form bindsubmit="formsubmit" wx:if="{{currenttab==1}}">
-            <view class="degbox">
-              <input placeholder="水平倾角 {{degx}}°" placeholder-style="color:greenyellow;text-align:center;" name="deg1" class="inputstyle"></input>
-              <input placeholder="竖直倾角{{degy}}°" placeholder-style="color:greenyellow;text-align:center;" name="deg2" class="inputstyle"></input>
-            </view>
-            <button class="startlistern" bindtap="beginlisten">开始检测轨迹</button>
-          </form>
-          <view class="lightnum" wx:if="{{currenttab==2}}">紫外线强度为：1000</view>
+        <view wx:if="{{!blueteethconnect}}" class="connecttips">请先连接蓝牙,点击蓝牙标志开始连接</view>
+        
+        <!-- 功能模块 -->
+        <!-- 导航栏 -->
+        <view class="tabbox" wx:if="{{blueteethconnect}}">
+          <view class="bar" bindtap="changebar" data-id="1" style="background-color:{{currenttab==1?'#dddddd':''}};border-top-right-radius:10px;">检测轨迹</view>
+          <view class="bar" bindtap="changebar" data-id="2" style="background-color:{{currenttab==2?'#dddddd':''}};">当前光强</view>
+          <view class="bar" bindtap="changebar" data-id="3" style="background-color:{{currenttab==3?'#dddddd':''}};">日光强记录</view>
+          <view class="bar" bindtap="changebar" data-id="4" style="background-color:{{currenttab==4?'#dddddd':''}};border-top-left-radius:10px;">手臂控制</view>
         </view>
+        <scroll-view wx:if="{{blueteethconnect}}" style="height:{{windowHeight-190}}px;width:{{windowWitdh}}px;background:#FAFAFA" scroll-y="true">
+          <!-- 画布组件 -->
+          <view class="scrollbox">
+            <view hidden="{{myCanvas}}" class="canvasbox">
+              <canvas  canvas-id="myCanvas" style="height:300px;width:300px"/>
+            </view>
+            <!-- 检测轨迹模块 -->
+            <form bindsubmit="formsubmit" wx:if="{{currenttab==1}}">
+              <view class="degbox">
+                <input placeholder="水平倾角 {{degx}}°" placeholder-style="color:#4A4E63;text-align:center;" name="deg1" class="inputstyle"></input>
+                <input placeholder="竖直倾角{{degy}}°" placeholder-style="color:#4A4E63;text-align:center;" name="deg2" class="inputstyle"></input>
+              </view>
+              <button class="startlistern" form-type="submit">开始检测轨迹</button>
+            </form>
+            <!-- 当前光强模块 -->
+            <view class="lightnum" wx:if="{{currenttab==2}}">紫外线强度为：{{lightstrong}}</view>
+            <!-- 手臂控制 -->
+            <view class="armcontrolbox d-c" wx:if="{{currenttab==4}}">
+              <!-- <view class="armmessagetitle">单片机传来的信息</view>
+              <view class="armmessagebody">
+                <view class="armmessagebodytrue">{{lightmessage}}</view>
+              </view> -->
+              <view class="armnumtitle">手臂状态参数</view>
+              <view class="armnumbox d-r">
+                <view class="armnumname">参数1：</view>
+                <view class="armnum">参数值</view>
+              </view>
+              <view class="armnumbox d-r">
+                <view class="armnumname">参数2：</view>
+                <view class="armnum">参数值</view>
+              </view>
+              <view class="armnumbox d-r">
+                <view class="armnumname">参数3：</view>
+                <view class="armnum">参数值</view>
+              </view>
+              <view class="ordertitle">手臂指令</view>
+              <view class="orderitem">开始移动</view>
+              <view class="orderitem">停止移动</view>
+              <!-- <view class="orderitem">跳一支舞</view> -->
+            </view>
+          </view>
+        </scroll-view>
       </view>
-    </scroll-view>
   </view>
+</view>
+<!-- 悬浮按钮 -->
+<view class="shopcarbtn" style="z-index:11;bottom:{{y}}px;right:{{x}}px;background:{{blueteethconnect?'rgb(176, 226, 255)':''}}" catchtouchmove="buttonMove" bindtouchstart="buttonStart" bindtouchend="buttonEnd" bindtap="showblueconnect" wx:if="{{stack==2}}">
+  <image class="shopcarimage" src="../images/blueteethicon.png"></image>
 </view>

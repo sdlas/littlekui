@@ -1,10 +1,37 @@
 .container{
   display:flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:center;
   align-items:center;
-  background-color:rgb(167, 255, 255);
+  background-color:#555555;
 }
+.inputbluebox{
+  height:350rpx;
+  width:100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FAFAFA;
+}
+.bluetext{
+  width:100%;
+  height:100rpx;
+  font-size:50rpx;
+  color:#4A4E63;
+  text-align: center;
+  line-height: 100rpx;
+}
+.bluebtn{
+  margin-top: 50rpx;
+  height:80rpx;
+  width:300rpx;
+  line-height: 80rpx;
+  font-size: 40rpx;
+  border:1px solid #c9c9c9;
+  box-shadow: #c9c9c9 0 0 10rpx 0;
+}
+button::after{ border: none; }
 .startbtn{
   font-size:20px;
   line-height: 150px;
@@ -47,7 +74,7 @@
 .greenland{
   width:100%;
   height:15px;
-  background-color:greenyellow;
+  background-color:rgb(209, 255, 140);
   border-radius: 5px 5px 0 0;
   box-shadow: greenyellow 0px 0px 10px 0px;
 }
@@ -56,25 +83,24 @@
   flex-direction:column;
   justify-content: flex-start;
   align-items: center;
-  background-color:rgb(111, 202, 255);
+  background-color:#555555;
 }
 .avatar{
-  margin-top:34px;
-  margin-bottom:-10px;
+  margin-top:40px;
   height:100px;
   width:100px;
   border-radius:100px;
   border-style: solid;
   border-width: 3px;
   border-color:#FFFFFF;
-  box-shadow: rgb(88, 88, 52) 0px 3px 10px 0px;
+  box-shadow: rgb(224, 223, 223) 0px 0px 4px 0px;
 }
 .infobox{
   display: flex;
   flex-direction: column;
   justify-content:flex-start;
   align-items: center;
-  background-color:#C76114;
+  background-color:#FFFFFF;
   width:100%;
 }
 .chatbuble{
@@ -85,12 +111,12 @@
   height:60px;
   background-color:#FFFFFF;
   border-radius:20px;
-  font-size:10px;
+  font-size:11px;
   color:#484848;
   line-height:20px;
   padding-left:10px;
   padding-right:10px;
-  box-shadow:rgb(211, 211, 211) 0rpx 0rpx 20rpx 2rpx;
+  box-shadow:rgb(211, 211, 211) 0rpx 0rpx 4rpx 2rpx;
 }
 .chatbuble2{
   position:fixed;
@@ -100,6 +126,7 @@
   height:13px;
   background-color:#FFFFFF;
   border-radius:20px;
+  box-shadow:rgb(211, 211, 211) 0rpx 0rpx 4rpx 2rpx;
 }
 .chatbuble3{
   position:fixed;
@@ -109,41 +136,57 @@
   height:8px;
   background-color:#FFFFFF;
   border-radius:8px;
+  box-shadow:rgb(211, 211, 211) 0rpx 0rpx 4rpx 2rpx;
 }
 .floatname{
   position: fixed;
-  top:80px;
-  right:10px;
+  top:220rpx;
+  right:50rpx;
   height:40px;
   width:70px;
-  background-color:rgb(253, 188, 7);
+  background-color:#FFFFFF;
   border-style: solid;
-  border-width:7px;
-  border-radius: 6px;
-  border-color:rgb(113, 241, 130);
+  border-width:1px;
+  border-radius: 3px;
+  border-color:rgb(192, 192, 192);
   line-height:40px;
   text-align:center;
-  color:rgb(255, 255, 112);
-  box-shadow:rgb(73, 194, 89) 0rpx 5rpx 20rpx 2rpx;
+  color:#484848;
+  font-size:35rpx;
+  font-weight:200;
+  box-shadow:rgb(233, 233, 233) 0rpx 0rpx 10rpx 2rpx;
+}
+.connecttips{
+  box-sizing: border-box;
+  padding:60rpx;
+  margin-top:100rpx;
+  height:300rpx;
+  width:100%;
+  line-height:100rpx;
+  font-size:25px;
+  text-align: center;
+  background:#FAFAFA;
+  color:#4A4E63;
 }
 .tabbox{
-  margin-top:10px;
+  margin-top:5px;
+  border-top:1rpx solid #dddddd;
   height:40px;
   width:100%;
   display: flex;
   flex-direction: row;
   justify-content:flex-start;
   align-items: center;
-  background-color:rgb(113, 241, 130);
-  box-shadow: rgb(113, 241, 130) 0px 0px 10px 0px;
+  background-color:#FAFAFA;
 }
 .bar{
-  width:33.33333%;
+  width:25%;
   height:40px;
   font-size:15px;
   text-align:center;
   line-height: 40px;
-  color:#C76114;
+  color:#000000;
+  font-weight:200;
 }
 .functioninfo{
   height:40px;
@@ -154,6 +197,13 @@
   letter-spacing: 0.2em;
   color:aquamarine;
   justify-content: center;
+}
+.scrollbox{
+  width:100%;
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: center;
 }
 .canvasbox{
   margin-top:10px;
@@ -239,13 +289,12 @@
   margin-top:1px;
   height:30px;
   width:100px;
-  background-color:greenyellow;
+  background-color:white;
   font-size:12px;
-  color:#C76114;
+  color:#4A4E63;
   line-height:30px;
   text-align:center;
   border-radius:4px;
-  box-shadow: greenyellow 0px 0px 10px 0px;
 }
 .lightnum{
   margin-top:100px;
@@ -253,13 +302,10 @@
   width:200px;
   line-height:50px;
   text-align:center;
-  color:rgb(255, 255, 112);
-  border-style:solid;
-  border-width:20px;
-  border-color:rgb(113, 241, 130);
-  border-radius:5px;
-  background-color:rgb(253, 188, 7);
-  box-shadow: rgb(113, 241, 130) 0px 0px 20px 0px;
+  color:#4A4E63;
+  font-weight: 200;
+  border:1px solid #c9c9c9;
+  border-radius: 3px;
 }
 .degbox{
   height:30px;
@@ -272,7 +318,111 @@
   height:30px;
   width:50%;
   font-size:15px;
-  color:white;
+  color:#4A4E63;
+}
+
+/* 手臂控制 */
+.armcontrolbox{
+  background-color:#FFFFFF;
+  width:100%;
+  height:100vh;
+  justify-content: flex-start;
+  align-items: center;
+}
+.armmessagetitle{
+  font-weight:200;
+  margin-top:20px;
+  margin-bottom: 13px;
+  height:20px;
+  line-height: 20rpx;
+  width:100%;
+  text-align: center;
+  font-size: 15px;
+  color:#4A4E63;
+}
+.armmessagebody{
+  box-sizing: border-box;
+  padding:0rpx 70rpx 0rpx 70rpx;
+  height:70px;
+  width:100%;
+}
+.armmessagebodytrue{
+  box-sizing: border-box;
+  padding: 10rpx;
+  height:100%;
+  border:1rpx solid #c9c9c9;
+  border-radius: 10rpx;
+  font-size:13px;
+  font-weight: 100;
+  line-height:16px;
+  word-break: true;
+  word-wrap: true;
+  color:#4A4E63;
+}
+.armnumtitle{
+  margin-top:20px;
+  margin-bottom:13px;
+  height:20px;
+  line-height: 20rpx;
+  width:100%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 300;
+  color:#4A4E63;
+}
+.armnumbox{
+  justify-content: space-between;
+  width:50%;
+}
+.armnumname{
+  height:20px;
+  line-height: 20rpx;
+  width:50%;
+  text-align: left;
+  font-weight:200;
+  font-size: 13px;
+  color:#4A4E63;
+}
+.armnum{
+  height:20px;
+  line-height: 20rpx;
+  width:50%;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 200;
+  color:#4A4E63;
+}
+.ordertitle{
+  margin-top:15px;
+  height:20px;
+  margin-bottom: 13px;
+  line-height: 20rpx;
+  width:100%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 300;
+  color:#4A4E63;
+}
+.orderitem{
+  margin-top:10rpx;
+  height:25px;
+  width:50%;
+  border-radius: 5px;
+  border:1rpx solid #c9c9c9;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 200;
+  color:#4A4E63;
+  line-height: 25px;
+}
+/* 常用布局 */
+.d-r{
+  display:flex;
+  flex-direction: row;
+}
+.d-c{
+  display: flex;
+  flex-direction: column;
 }
 @-webkit-keyframes load8 {     
   0% {     
@@ -345,4 +495,27 @@
     100% {
       transform:scale(1);
     }
+}
+
+.shopcarbtn{
+  position: fixed;
+  height:110rpx;
+  width:110rpx;
+  border-radius:90rpx;
+  background: #FFFFFF;
+  border:1px solid rgb(241, 241, 241);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.514);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.shopcarimage{
+  text-align: center;
+  line-height:90rpx;
+  font-size:20px;
+  color:rgb(109, 109, 109);
+  height:90rpx;
+  width:70rpx;
+  border-radius:90rpx;
 }
